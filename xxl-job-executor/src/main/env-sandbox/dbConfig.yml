@@ -1,0 +1,37 @@
+db:
+  config:
+    timeout: 1000
+    idleTimeout: 3600000
+    maxLifetime: 4000000
+    dataSouceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+    maximumPoolSize: 20
+    connectionTestQuery: select 1;
+  dbs:
+    - url: jdbc:mysql://172.16.117.226:3306/ent_portal?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      user: ent_all
+      password: ent
+      name: masterDb
+    - url: jdbc:mysql://172.16.117.226:3306/ent_portal?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      user: ent_all
+      password: ent
+      name: slaveDb
+    - url: jdbc:mysql://172.16.117.226:3306/ucenter_statistic?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      user: ent_all
+      password: ent
+      name: logDb
+spring:
+  redis:
+    host: 172.16.116.149
+    port: 9736
+    password: shangde2017
+auth:
+  redis:
+    host: 172.16.116.149
+    port: 6379
+    password: shangde2017
+
+cache:
+  redis:
+    host: 172.16.116.49
+    port: 20806
+    password: test|test
