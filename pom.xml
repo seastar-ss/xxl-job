@@ -99,13 +99,84 @@
 	</repositories>
 
 	<profiles>
-
 		<profile>
-			<id>release</id>
+			<id>env-dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<build>
-
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-dev</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
 			</build>
 
+		</profile>
+		<profile>
+			<id>env-test</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-test</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>env-prod</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-prod</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>env-cloud</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-cloud</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>env-prep</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-prep</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
 		</profile>
 	</profiles>
 
