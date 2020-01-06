@@ -1,0 +1,9 @@
+2020-01-06 12:19:01 [com.xxl.job.core.thread.JobThread#run]-[124]-[Thread-25] <br>----------- xxl-job job execute start -----------<br>----------- Param:
+2020-01-06 12:19:01 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[39]-[Thread-25] XXL-JOB, Hello World.
+2020-01-06 12:19:01 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[42]-[Thread-25] beat at:0
+2020-01-06 12:19:03 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[42]-[Thread-25] beat at:1
+2020-01-06 12:19:05 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[42]-[Thread-25] beat at:2
+2020-01-06 12:19:07 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[42]-[Thread-25] beat at:3
+2020-01-06 12:19:09 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[42]-[Thread-25] beat at:4
+2020-01-06 12:19:11 [com.xxl.job.core.thread.JobThread#run]-[164]-[Thread-25] <br>----------- xxl-job job execute end(finish) -----------<br>----------- ReturnT:ReturnT [code=200, msg=null, content=null]
+2020-01-06 12:19:11 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[190]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.

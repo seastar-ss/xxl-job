@@ -24,8 +24,26 @@ application:
     cache:
         warmLimit: 204800
 
+
+server:
+  port: 9080
+  servlet:
+      context-path: /job-executor
+
 testUUID:
     url: http://172.16.117.77/uuid/uuid/getAndMerge
 
 redis-maintainance: false
 redis-include-variables: USERID,OPPOID,APPIDOPENID,UNIONID
+
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8080/job-admin
+    executor:
+      appname: uuid-job-executor
+      ip:
+      port: 9999
+      logpath: ./logs/
+      logretentiondays: 30
+    accessToken:

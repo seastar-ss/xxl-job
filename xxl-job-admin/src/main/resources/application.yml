@@ -1,7 +1,8 @@
 ### web
 server:
   port: 8080
-  context-path: /job-admin
+  servlet:
+      context-path: /job-admin
 
 ### actuator
 management:
@@ -18,7 +19,8 @@ spring:
     static-path-pattern: /static/**
   resources:
     static-locations: classpath:/static/
-
+  pid:
+      file: ./application.pid
 ### freemarker
 #spring:
   freemarker:
@@ -31,9 +33,6 @@ spring:
 
 
 ### xxl-job, datasource
-
-
-
 
 ### mybatis
 mybatis:
