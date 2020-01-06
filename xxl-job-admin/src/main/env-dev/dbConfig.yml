@@ -1,55 +1,13 @@
-db:
-  config:
-    timeout: 1000
-    idleTimeout: 3600000
-    maxLifetime: 4000000
-    dataSouceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-    maximumPoolSize: 3
-    connectionTestQuery: select 1;
-  dbs:
-#    - url: jdbc:mysql://172.16.112.54:4000/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-#      user: aduser
-#      password: asdf1234
-#      name: common_uuidMaster
-#    - url: jdbc:mysql://172.16.112.54:4000/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-#      user: aduser
-#      password: asdf1234
-#      name: common_uuidSlave
-    - url: jdbc:mysql://172.16.117.226:3306/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-      user: ent_all
-      password: ent
-      name: common_uuidMaster
-    - url: jdbc:mysql://172.16.117.226:3306/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-      user: ent_all
-      password: ent
-      name: common_uuidSlave
-    - url: jdbc:mysql://172.16.112.54:4000/ucenter_statistic?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-      user: aduser
-      password: asdf1234
-      name: logDb
 spring:
-  redis:
-    host: 172.16.116.135
-#    host: 127.0.0.1
-    port: 6379
-    password: shangde2017
-    #password: shawnRedisForTest-1121
-auth:
-  redis:
-#    host: 127.0.0.1
-    host: 172.16.116.135
-    port: 6379
-    password: shangde2017
-    #password: shawnRedisForTest-1121
+  datasource:
+    url: jdbc:mysql://172.16.117.226:3306/uuid_job?useUnicode=true&characterEncoding=UTF-8
+    username: ent_all
+    password: ent
+    driver-class-name: com.mysql.jdbc.Driver
 
-cache:
-  redis:
-    host: 172.16.116.49
-    port: 20806
-    password: test|test
-
-#cache:
-#  redis:
-#    host: 172.16.116.4
-#    port: 20000
-#    password: uuid|OVL9hPVnkx
+#datasource.type=org.apache.tomcat.jdbc.pool.DataSource
+  #datasource.tomcat.max-wait=10000
+  #datasource.tomcat.max-active=30
+  #datasource.tomcat.test-on-borrow=true
+  #datasource.tomcat.validation-query=SELECT 1
+  #datasource.tomcat.validation-interval=30000

@@ -1,49 +1,6 @@
-db:
-  config:
-    timeout: 1000
-    idleTimeout: 3600000
-    maxLifetime: 4000000
-    dataSouceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-    maximumPoolSize: 30
-    connectionTestQuery: select 1;
-  dbs:
-#    - url: jdbc:mysql://172.16.112.54:4000/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-#      user: aduser
-#      password: asdf1234
-#      name: common_uuidMaster
-#    - url: jdbc:mysql://172.16.112.54:4000/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-#      user: aduser
-#      password: asdf1234
-#      name: common_uuidSlave
-    - url: jdbc:mysql://172.16.117.226:3306/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-      user: ent_all
-      password: ent
-      name: common_uuidMaster
-    - url: jdbc:mysql://172.16.117.226:3306/common_uuid?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-      user: ent_all
-      password: ent
-      name: common_uuidSlave
-    - url: jdbc:mysql://172.16.112.54:4000/ucenter_statistic?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-      user: aduser
-      password: asdf1234
-      name: logDb
 spring:
-  redis:
-    host: 172.16.116.135
-#    host: 127.0.0.1
-    port: 6379
-    password: shangde2017
-    #password: shawnRedisForTest-1121
-auth:
-  redis:
-#    host: 127.0.0.1
-    host: 172.16.116.135
-    port: 6379
-    password: shangde2017
-    #password: shawnRedisForTest-1121
-
-cache:
-  redis:
-    host: 172.16.116.49
-    port: 20806
-    password: test|test
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/xxl_job?Unicode=true&characterEncoding=UTF-8
+    username: root
+    password: root_pwd
+    driver-class-name: com.mysql.jdbc.Driver

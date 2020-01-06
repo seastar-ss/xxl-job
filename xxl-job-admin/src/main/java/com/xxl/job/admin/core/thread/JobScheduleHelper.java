@@ -298,7 +298,7 @@ public class JobScheduleHelper {
         // 1、stop schedule
         scheduleThreadToStop = true;
         try {
-            TimeUnit.SECONDS.sleep(1);  // wait
+            TimeUnit.SECONDS.sleep(2);  // wait
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
         }
@@ -325,7 +325,7 @@ public class JobScheduleHelper {
         }
         if (hasRingData) {
             try {
-                TimeUnit.SECONDS.sleep(8);
+                TimeUnit.SECONDS.sleep(10);
             } catch (InterruptedException e) {
                 logger.error(e.getMessage(), e);
             }

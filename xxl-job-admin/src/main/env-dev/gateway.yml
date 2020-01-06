@@ -1,26 +1,26 @@
-#网关
-gateway:
-    url: https://api-test.sunlands.com
-    eraseCacheByIdUrl: /UserAccount/svbk/userAccount/eraseCacheById
-    ucenter:
-        appKey: customer_account_service
-        appSecret: Ej9xjHMeg9lM5b1lk5qDHYTNcecIQMrz
-    ucenterLite:
-        appKey: user_account_service
-        appSecret: L6jd5uzOfZzfNhXB8unESgZIuLyxbrmW
-    svCenter:
-        appKey: sunlands_ucenter_iwSync
-        appSecret: DccJgIoTITeSkks7T3Hd7KsJ4Cgo3dH6
-        urls:
-            classApiUrl: /operationSv/class/queryStuClassInfoBatch
+### xxl-job email
+spring:
+  mail:
+    host: smtp.263.net
+    port: 8011
+    username: ent@sunlands.com
+    password: qiyejia2015
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
 
-
-application:
-    cache:
-        warmLimit: 1024
-
-testUUID:
-    url: http://172.16.117.206:13232/uuid/uuid/getAndMerge
-
-redis-maintainance: false
-redis-include-variables: USERID,OPPOID,APPIDOPENID,UNIONID
+### xxl-job, access token
+xxl:
+  job:
+    accessToken:
+### xxl-job, i18n (default empty as chinese, "en" as english)
+    i18n:
+## xxl-job, triggerpool max size
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
+### xxl-job, log retention days
+    logretentiondays: 30

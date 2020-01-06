@@ -1,0 +1,40 @@
+### web
+server:
+  port: 8080
+  context-path: /job-admin
+
+### actuator
+management:
+  context-path: /actuator
+  health:
+    mail:
+      enabled: false
+
+### resources
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 0
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+
+### freemarker
+#spring:
+  freemarker:
+    templateLoaderPath: classpath:/templates/
+    suffix: .ftl
+    charset: UTF-8
+    request-context-attribute: request
+    settings.number_format: 0.##########
+
+
+
+### xxl-job, datasource
+
+
+
+
+### mybatis
+mybatis:
+  mapper-locations: classpath:/mybatis-mapper/*Mapper.xml
