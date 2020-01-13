@@ -724,7 +724,7 @@ public XxlJobSpringExecutor xxlJobExecutor() {
     - 3、执行日志：需要通过 "XxlJobLogger.log" 打印执行日志；
     
 ```
-// 可参考Sample示例执行器中的 "com.xxl.job.executor.service.jobhandler.SampleXxlJob" ，如下：
+// 可参考Sample示例执行器中的 "SampleXxlJob" ，如下：
 @XxlJob("demoJobHandler")
 public ReturnT<String> execute(String param) {
 
@@ -1204,7 +1204,7 @@ API服务请求参考代码：可参考任务界面操作的ajax请求。任何a
     5、终止任务：调度中心使用
     
 API服务位置：com.xxl.job.core.biz.ExecutorBiz     
-API服务请求参考代码：com.xxl.job.executor.ExecutorBizTest
+API服务请求参考代码：ExecutorBizTest
 
 ### 5.13 故障转移 & 失败重试
 一次完整任务流程包括"调度（调度中心） + 执行（执行器）"两个阶段。

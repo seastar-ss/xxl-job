@@ -1,19 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.xuxueli</groupId>
-	<artifactId>xxl-job</artifactId>
+	<groupId>com.shangde</groupId>
+	<artifactId>common-xxl-job</artifactId>
 	<version>2.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
-	<description>A distributed task scheduling framework.</description>
-	<url>https://www.xuxueli.com/</url>
 
 	<modules>
 		<module>xxl-job-core</module>
 		<module>xxl-job-admin</module>
-		<module>xxl-job-executor-samples</module>
+		<module>xxl-job-executor</module>
     </modules>
 
 	<properties>
@@ -26,8 +24,8 @@
 
 		<xxl-rpc.version>1.5.0</xxl-rpc.version>
 
-		<spring.version>4.3.25.RELEASE</spring.version>
-		<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+		<spring.version>5.0.4.RELEASE</spring.version>
+		<spring-boot.version>2.0.0.RELEASE</spring-boot.version>
 		<mybatis-spring-boot-starter.version>1.3.5</mybatis-spring-boot-starter.version>
 		<mysql-connector-java.version>5.1.48</mysql-connector-java.version>
 
@@ -55,87 +53,130 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<tag>master</tag>
-		<url>https://github.com/xuxueli/xxl-job.git</url>
-		<connection>scm:git:https://github.com/xuxueli/xxl-job.git</connection>
-		<developerConnection>scm:git:git@github.com:xuxueli/xxl-job.git</developerConnection>
-	</scm>
-	<developers>
-		<developer>
-			<id>XXL</id>
-			<name>xuxueli</name>
-			<email>931591021@qq.com</email>
-			<url>https://github.com/xuxueli</url>
-		</developer>
-	</developers>
+	<repositories>
+		<repository>
+			<id>public</id>
+			<name>shangde public</name>
+			<url>http://172.16.117.215:8100/archiva/repository/public/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>interval:30</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>snapshots</id>
+			<name>shangde snapshots</name>
+			<url>http://172.16.117.215:8100/archiva/repository/snapshots/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>interval:30</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sunlands-public</id>
+			<name>sunlands public mirror</name>
+			<url>http://192.168.1.216:8100/archiva/repository/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sunlands-snapshots</id>
+			<name>sunlands snapshots mirror</name>
+			<url>http://192.168.1.216:8100/archiva/repository/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<profiles>
-
 		<profile>
-			<id>release</id>
+			<id>env-dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<build>
-				<plugins>
-					<!-- Source -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>${maven-source-plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Javadoc -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>${maven-javadoc-plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-									<doclint>none</doclint>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- GPG -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-						<configuration>
-							<useAgent>false</useAgent>
-						</configuration>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-				</plugins>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-dev</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
 			</build>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>oss</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-				</snapshotRepository>
-				<repository>
-					<id>oss</id>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-				</repository>
-			</distributionManagement>
+
+		</profile>
+		<profile>
+			<id>env-test</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-test</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>env-prod</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-prod</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>env-cloud</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-cloud</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>env-prep</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+					<resource>
+						<directory>src/main/env-prep</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+			</build>
 		</profile>
 	</profiles>
 
